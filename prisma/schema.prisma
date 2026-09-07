@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  email        String   @unique
+  passwordHash String   @db.VarChar(255)
+  name         String   @db.VarChar(100)
+  role         String   @default("ADMIN") @db.VarChar(50)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Event {
+  id               String         @id @default(cuid())
+  name             String         @db.VarChar(150)
+  slug             String         @unique @db.VarChar(100)
+  tagline          String?        @db.VarChar(255)
+  category         String         @db.VarChar(100)
+  venue            String         @db.VarChar(150)
+  startTime        DateTime
+  endTime          DateTime
+  capacity         Int
+  registrationOpen Boolean        @default(true)
+  posterImage      String?        @db.VarChar(255)
+  description      String         @db.Text
+  rules            String         @db.Text
+  maxTeamSize      Int            @default(1)
+  isTeamEvent      Boolean        @default(false)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  registrations    Registration[]
+
+  @@index([category])
+}
+
+model Registration {
+  id                 String               @id @default(cuid())
+  registrationNumber String               @unique @db.VarChar(50)
+  eventId            String
+  name               String               @db.VarChar(100)
+  email              String               @db.VarChar(150)
+  phone              String               @db.VarChar(20)
+  department         String               @db.VarChar(100)
+  year               String               @db.VarChar(50)
+  college            String?              @default("College of Engineering, Guindy") @db.VarChar(150)
+  createdAt          DateTime             @default(now())
+  event              Event                @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  members            RegistrationMember[]
+
+  @@unique([eventId, email])
+  @@index([eventId])
+  @@index([registrationNumber])
+}
+
+model RegistrationMember {
+  id             String       @id @default(cuid())
+  registrationId String
+  name           String       @db.VarChar(100)
+  email          String?      @db.VarChar(150)
+  phone          String?      @db.VarChar(20)
+  registration   Registration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  @@index([registrationId])
+}
+
+model RateLimitLog {
+  id           String   @id @default(cuid())
+  endpoint     String   @db.VarChar(150)
+  ipHash       String   @db.VarChar(64)
+  eventId      String?  @db.VarChar(100)
+  requestCount Int      @default(1)
+  blockedAt    DateTime @default(now())
+  reason       String?  @db.VarChar(255)
+
+  @@index([ipHash])
+  @@index([blockedAt])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  action     String   @db.VarChar(100)
+  adminId    String?  @db.VarChar(100)
+  targetType String   @db.VarChar(50)
+  targetId   String   @db.VarChar(100)
+  details    String   @db.Text
+  createdAt  DateTime @default(now())
+
+  @@index([action])
+  @@index([createdAt])
+}

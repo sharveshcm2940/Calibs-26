@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgBands" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0B0A09" />
+      <stop offset="50%" stop-color="#471014" />
+      <stop offset="100%" stop-color="#141210" />
+    </linearGradient>
+    <radialGradient id="ampGlow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#A51D24" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#0B0A09" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="600" fill="url(#bgBands)" />
+  <rect width="400" height="600" fill="url(#ampGlow)" />
+
+  <!-- Distressed Poster Border -->
+  <rect x="15" y="15" width="370" height="570" fill="none" stroke="#F1E4C5" stroke-width="1.5" opacity="0.4" />
+  <line x1="25" y1="25" x2="375" y2="25" stroke="#C69A45" stroke-width="3" />
+
+  <text x="200" y="52" font-family="'Barlow Condensed', Impact, sans-serif" font-size="12" font-weight="bold" fill="#C69A45" text-anchor="middle" letter-spacing="5">
+    HIGH VOLTAGE LIVE SOUNDTRACK
+  </text>
+
+  <!-- Central Electric Guitar & Soundwaves -->
+  <g transform="translate(200, 240)">
+    <!-- Vinyl record disc behind -->
+    <circle cx="0" cy="0" r="105" fill="#0B0A09" stroke="#332B24" stroke-width="4" />
+    <circle cx="0" cy="0" r="85" fill="none" stroke="#220608" stroke-width="2" />
+    <circle cx="0" cy="0" r="65" fill="none" stroke="#332B24" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="35" fill="#A51D24" />
+    <circle cx="0" cy="0" r="8" fill="#F1E4C5" />
+    <!-- Stylized Electric Guitar Silhouette Angled -->
+    <g transform="rotate(-30)">
+      <!-- Guitar Body -->
+      <path d="M-25,10 C-45,30 -50,70 -30,100 C-10,120 30,120 45,95 C60,65 50,30 25,10 Z" fill="#F1E4C5" />
+      <circle cx="0" cy="65" r="16" fill="#5A1116" />
+      <!-- Neck & Headstock -->
+      <rect x="-6" y="-120" width="12" height="135" fill="#C69A45" />
+      <path d="M-10,-120 L10,-120 L14,-145 L-14,-145 Z" fill="#F1E4C5" />
+    </g>
+  </g>
+
+  <!-- Tamil Script -->
+  <text x="200" y="385" font-family="'Cinzel', serif" font-size="14" fill="#C69A45" text-anchor="middle" letter-spacing="6">
+    இசை சங்கமம்
+  </text>
+
+  <text x="200" y="425" font-family="'Barlow Condensed', Impact, sans-serif" font-size="40" font-weight="900" fill="#F1E4C5" text-anchor="middle" letter-spacing="2">
+    BATTLE OF BANDS
+  </text>
+  <text x="200" y="450" font-family="'Barlow Condensed', Impact, sans-serif" font-size="14" font-weight="bold" fill="#A51D24" text-anchor="middle" letter-spacing="4">
+    KALYANJI TO ANIRUDH RIFFS
+  </text>
+
+  <rect x="35" y="480" width="330" height="75" fill="#0B0A09" stroke="#C69A45" stroke-width="1" opacity="0.85" />
+  <text x="50" y="508" font-family="'Courier New', monospace" font-size="11" fill="#F1E4C5" letter-spacing="1">VENUE: OAT LIVE STAGE</text>
+  <text x="50" y="528" font-family="'Courier New', monospace" font-size="11" fill="#C69A45" letter-spacing="1">CALL TIME: 11:00 AM</text>
+  <text x="50" y="546" font-family="'Courier New', monospace" font-size="11" fill="#A51D24" letter-spacing="1">MAX SQUAD: 8 MUSICIANS</text>
+
+  <g transform="translate(325, 517)">
+    <circle cx="0" cy="0" r="22" fill="none" stroke="#A51D24" stroke-width="2" stroke-dasharray="3 1" />
+    <text x="0" y="4" font-family="'Barlow Condensed', Impact, sans-serif" font-size="12" font-weight="bold" fill="#A51D24" text-anchor="middle">LIVE</text>
+  </g>
+</svg>

@@ -1,0 +1,393 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-black: #0D0B09;
+    --color-paper: #F0E1BF;
+    --color-red: #A71920;
+    --color-maroon: #571015;
+    --color-gold: #C49A48;
+    --color-brown: #30251D;
+
+    --font-bebas: "Bebas Neue", "Anton", Impact, sans-serif;
+    --font-playfair: "Playfair Display", Georgia, serif;
+    --font-courier: "Courier Prime", "Courier New", monospace;
+    --font-inter: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  body {
+    background-color: var(--color-black);
+    color: var(--color-paper);
+    overflow-x: hidden;
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  ::selection {
+    background-color: var(--color-red);
+    color: var(--color-paper);
+  }
+}
+
+/* Subtle Physical Film & Paper Grain */
+.paper-grain {
+  background-color: #F0E1BF;
+  background-image: radial-gradient(#30251D 0.65px, transparent 0.65px);
+  background-size: 8px 8px;
+}
+
+.theatre-wall {
+  background-color: #0D0B09;
+  background-image: 
+    linear-gradient(to right, #161310 1px, transparent 1px),
+    linear-gradient(to bottom, #161310 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Masking Tape Strips for Posters */
+.tape-top {
+  position: relative;
+}
+.tape-top::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.5deg);
+  width: 70px;
+  height: 20px;
+  background-color: rgba(196, 154, 72, 0.45);
+  border: 1px solid rgba(240, 225, 191, 0.3);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* Halftone Dot Pattern for Newspaper & Photos */
+.halftone-screen {
+  background-image: radial-gradient(#0D0B09 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+/* Hard Offset Print Misregistration / Theatrical Title Shadows */
+.poster-title-shadow {
+  text-shadow: 
+    4px 4px 0px #A71920,
+    8px 8px 0px #571015;
+}
+
+.print-offset-red {
+  text-shadow: 3px 3px 0px #A71920;
+}
+
+.print-offset-black {
+  text-shadow: 3px 3px 0px #0D0B09;
+}
+
+.print-offset-orange {
+  text-shadow: 3px 3px 0px #E67E22;
+}
+
+.print-offset-gold {
+  text-shadow: 3px 3px 0px #C49A48;
+}
+
+/* Distressed Physical Rubber Stamp */
+.distressed-stamp {
+  border: 4px solid #A71920;
+  color: #A71920;
+  text-transform: uppercase;
+  font-family: var(--font-bebas), "Anton", Impact, sans-serif;
+  letter-spacing: 0.15em;
+  padding: 4px 16px;
+  transform: rotate(-7deg);
+  box-shadow: 2px 2px 0px #571015, inset 0 0 4px rgba(167, 25, 32, 0.25);
+  display: inline-block;
+}
+
+/* Perforated Ticket Notches */
+.ticket-notch-left {
+  position: relative;
+}
+.ticket-notch-left::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #0D0B09;
+  border-right: 2px solid #30251D;
+}
+
+.ticket-notch-right {
+  position: relative;
+}
+.ticket-notch-right::after {
+  content: "";
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #0D0B09;
+  border-left: 2px solid #30251D;
+}
+
+/* 7 Kollywood Worlds Atmospheric Styles */
+
+/* 1. Kaithi Sodium Night Road */
+.kaithi-road {
+  background-color: #0B0A08;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 48px,
+    #E67E22 48px,
+    #E67E22 52px
+  );
+  background-size: 100px 4px;
+  background-position: bottom;
+  background-repeat: repeat-x;
+}
+
+.sodium-haze {
+  background: radial-gradient(circle at 50% 20%, rgba(230, 126, 34, 0.18) 0%, transparent 70%);
+}
+
+/* 2. Leo Cold Fog Texture */
+.leo-mist {
+  background: radial-gradient(circle at 70% 30%, rgba(197, 209, 217, 0.12) 0%, transparent 60%),
+              radial-gradient(circle at 20% 80%, rgba(167, 25, 32, 0.15) 0%, transparent 65%);
+}
+
+/* 3. Rolex Gold Luxury Sheen */
+.rolex-smoke {
+  background: radial-gradient(ellipse at center, rgba(196, 154, 72, 0.16) 0%, transparent 70%);
+}
+
+/* 4. Karuppu Earthy Raw Grain */
+.karuppu-earth {
+  background-color: #0D0C0A;
+  background-image: radial-gradient(#3D2E24 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+/* 5. Meesaya Murukku Cassette Wheel */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.cassette-spin {
+  animation: spinSlow 8s linear infinite;
+}
+
+/* 6. VIP Engineering Grid */
+.vip-grid {
+  background-color: #EDE2CC;
+  background-image: 
+    linear-gradient(to right, rgba(13, 11, 9, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(13, 11, 9, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* 7. Mankatha Heist Noir Geometry */
+.mankatha-noir {
+  background-color: #0B0B0C;
+  background-image: radial-gradient(rgba(196, 154, 72, 0.12) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Hide scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Kollywood Theatrical Movie End Credits Animations */
+@keyframes kollywoodCreditsCrawl {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes projectorBeamFlicker {
+  0%, 100% {
+    opacity: 0.96;
+  }
+  25% {
+    opacity: 0.88;
+  }
+  50% {
+    opacity: 0.98;
+  }
+  75% {
+    opacity: 0.84;
+  }
+}
+
+@keyframes filmGateWeave {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-0.8px) translateX(0.4px);
+  }
+  50% {
+    transform: translateY(0.5px) translateX(-0.3px);
+  }
+  75% {
+    transform: translateY(-0.4px) translateX(0.2px);
+  }
+}
+
+@keyframes creditsGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(196, 154, 72, 0.4), 0 0 20px rgba(167, 25, 32, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(196, 154, 72, 0.8), 0 0 35px rgba(167, 25, 32, 0.6);
+  }
+}
+
+.kollywood-crawl {
+  animation: kollywoodCreditsCrawl var(--credits-duration, 52s) linear infinite;
+  will-change: transform;
+}
+
+.projector-flicker {
+  animation: projectorBeamFlicker 0.22s infinite;
+}
+
+.film-gate-weave {
+  animation: filmGateWeave 1.2s ease-in-out infinite;
+}
+
+.credits-title-glow {
+  animation: creditsGlow 3s ease-in-out infinite;
+}
+
+/* Kollywood Theatrical Slide Animations */
+@keyframes cinematicCardIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.93);
+    filter: blur(6px);
+  }
+  25% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes anamorphicFlareStreak {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.1);
+  }
+  35% {
+    opacity: 0.95;
+    transform: scaleX(1.4);
+  }
+  70% {
+    opacity: 0.7;
+    transform: scaleX(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(0.3);
+  }
+}
+
+@keyframes opticalFlash {
+  0% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.cinematic-slide-anim {
+  animation: cinematicCardIn 3.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity, filter;
+}
+
+.anamorphic-streak {
+  animation: anamorphicFlareStreak 3.6s ease-in-out infinite;
+}
+
+.optical-flash {
+  animation: opticalFlash 0.3s ease-out forwards;
+}
+
+/* Chromatic Aberration for Kollywood Blockbuster Titles */
+.chromatic-text {
+  text-shadow:
+    -2px 0px 2px rgba(255, 35, 35, 0.7),
+    2px 0px 2px rgba(35, 185, 255, 0.7),
+    0px 0px 14px rgba(196, 154, 72, 0.45);
+}
+
+/* 35mm Film Reel Continuous Automatic Sliding Keyframes */
+@keyframes continuousReelSlide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes continuousReelSlideReverse {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.reel-auto-slide {
+  display: flex;
+  width: max-content;
+  animation: continuousReelSlide var(--reel-duration, 44s) linear infinite;
+  animation-play-state: var(--reel-play-state, running);
+  will-change: transform;
+}
+
+.reel-auto-slide-reverse {
+  animation-name: continuousReelSlideReverse;
+}
+
+/* Sprocket holes auto-slide animation in lockstep */
+@keyframes sprocketSlide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-24px, 0, 0);
+  }
+}
+
+.sprocket-slide-anim {
+  animation: sprocketSlide 1s linear infinite;
+  animation-play-state: var(--reel-play-state, running);
+}
+
+

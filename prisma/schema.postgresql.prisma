@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         String   @default("ADMIN")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Event {
+  id               String         @id @default(cuid())
+  name             String
+  slug             String         @unique
+  tagline          String?
+  category         String
+  venue            String
+  startTime        DateTime
+  endTime          DateTime
+  capacity         Int
+  registrationOpen Boolean        @default(true)
+  posterImage      String?
+  description      String         @db.Text
+  rules            String         @db.Text
+  maxTeamSize      Int            @default(1)
+  isTeamEvent      Boolean        @default(false)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  registrations    Registration[]
+
+  @@index([category])
+}
+
+model Registration {
+  id                 String               @id @default(cuid())
+  registrationNumber String               @unique
+  eventId            String
+  name               String
+  email              String
+  phone              String
+  department         String
+  year               String
+  college            String?              @default("College of Engineering, Guindy")
+  createdAt          DateTime             @default(now())
+  event              Event                @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  members            RegistrationMember[]
+
+  @@unique([eventId, email])
+  @@index([eventId])
+  @@index([registrationNumber])
+}
+
+model RegistrationMember {
+  id             String       @id @default(cuid())
+  registrationId String
+  name           String
+  email          String?
+  phone          String?
+  registration   Registration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  @@index([registrationId])
+}
+
+model RateLimitLog {
+  id           String   @id @default(cuid())
+  endpoint     String
+  ipHash       String
+  eventId      String?
+  requestCount Int      @default(1)
+  blockedAt    DateTime @default(now())
+  reason       String?
+
+  @@index([ipHash])
+  @@index([blockedAt])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  action     String
+  adminId    String?
+  targetType String
+  targetId   String
+  details    String   @db.Text
+  createdAt  DateTime @default(now())
+
+  @@index([action])
+  @@index([createdAt])
+}

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgSinging" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#471116" />
+      <stop offset="60%" stop-color="#140E0A" />
+      <stop offset="100%" stop-color="#0B0A09" />
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="600" fill="url(#bgSinging)" />
+  <rect x="18" y="18" width="364" height="564" fill="none" stroke="#C69A45" stroke-width="1.5" />
+
+  <text x="200" y="55" font-family="'Barlow Condensed', Impact, sans-serif" font-size="12" font-weight="bold" fill="#C69A45" text-anchor="middle" letter-spacing="5">
+    THE MAESTRO MELODY TRIBUTE
+  </text>
+  <line x1="70" y1="65" x2="330" y2="65" stroke="#C69A45" stroke-width="1" opacity="0.6" />
+
+  <!-- Vintage Chrome Studio Microphone -->
+  <g transform="translate(200, 240)">
+    <!-- Stand Ring -->
+    <circle cx="0" cy="0" r="80" fill="none" stroke="#C69A45" stroke-width="3" />
+    <!-- Microphone Capsule -->
+    <rect x="-22" y="-45" width="44" height="65" rx="14" fill="#F1E4C5" stroke="#0B0A09" stroke-width="3" />
+    <!-- Grill slats -->
+    <line x1="-16" y1="-30" x2="16" y2="-30" stroke="#0B0A09" stroke-width="2" />
+    <line x1="-16" y1="-18" x2="16" y2="-18" stroke="#0B0A09" stroke-width="2" />
+    <line x1="-16" y1="-6" x2="16" y2="-6" stroke="#0B0A09" stroke-width="2" />
+    <line x1="-16" y1="6" x2="16" y2="6" stroke="#0B0A09" stroke-width="2" />
+    <!-- Stand mount -->
+    <rect x="-6" y="20" width="12" height="60" fill="#C69A45" />
+    <circle cx="0" cy="80" r="15" fill="#5A1116" />
+  </g>
+
+  <text x="200" y="385" font-family="'Cinzel', serif" font-size="14" fill="#C69A45" text-anchor="middle" letter-spacing="6">
+    குரல் எக்ஸ்பிரஸ்
+  </text>
+
+  <text x="200" y="425" font-family="'Barlow Condensed', Impact, sans-serif" font-size="44" font-weight="900" fill="#F1E4C5" text-anchor="middle" letter-spacing="2">
+    VOCALS &amp; MELODIES
+  </text>
+  <text x="200" y="450" font-family="'Barlow Condensed', Impact, sans-serif" font-size="14" font-weight="bold" fill="#A51D24" text-anchor="middle" letter-spacing="4">
+    ONE MICROPHONE. MILLIONS OF EMOTIONS.
+  </text>
+
+  <rect x="35" y="480" width="330" height="75" fill="#0B0A09" stroke="#C69A45" stroke-width="1" opacity="0.85" />
+  <text x="50" y="508" font-family="'Courier New', monospace" font-size="11" fill="#F1E4C5" letter-spacing="1">VENUE: MINI AUDITORIUM</text>
+  <text x="50" y="528" font-family="'Courier New', monospace" font-size="11" fill="#C69A45" letter-spacing="1">CALL TIME: 01:00 PM</text>
+  <text x="50" y="546" font-family="'Courier New', monospace" font-size="11" fill="#A51D24" letter-spacing="1">FORMAT: SOLO OR DUET UNPLUGGED</text>
+</svg>
