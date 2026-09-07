@@ -209,34 +209,17 @@ export async function POST(
       );
     }
 
-    // Graceful handling when MySQL server is offline during local UI review
     if (
       error.name === "PrismaClientInitializationError" ||
       error.message?.includes("Can't reach database server")
     ) {
-      console.warn("MySQL offline; processing in-memory demo registration.");
-      const regNumber = generateRegistrationNumber();
+      console.warn("Database server unavailable during registration attempt.");
       return NextResponse.json(
         {
-          message: "Registration confirmed! Your cinema pass is ready.",
-          registration: {
-            registrationNumber: regNumber,
-            eventId: id,
-            name: body?.name || "Participant",
-            email: body?.email || "student@svce.ac.in",
-            phone: body?.phone || "9840123456",
-            department: body?.department || "ECE",
-            year: body?.year || "1st Year",
-            college: body?.college || "Sri Venkateswara College of Engineering (SVCE)",
-            members: body?.members || [],
-          },
-          updatedEvent: {
-            id,
-            remainingSpots: 2,
-            status: "LIMITED",
-          },
+          message: "Database service is currently unreachable. Please try again later or contact the organizing desk.",
+          code: "DATABASE_UNAVAILABLE",
         },
-        { status: 201 }
+        { status: 503 }
       );
     }
 

@@ -83,15 +83,6 @@ export function Navigation({ onRegisterClick }: NavigationProps) {
               REEL
             </a>
             <a
-              href="#worlds"
-              onClick={handleLinkClick}
-              className="hover:text-cinema-gold transition-colors text-cinema-gold font-bold flex items-center gap-1"
-              title="Paakalaama?"
-            >
-              <span className="w-1.5 h-1.5 bg-cinema-red" />
-              <span>THE 7 WORLDS</span>
-            </a>
-            <a
               href="#posters"
               onClick={handleLinkClick}
               className="hover:text-cinema-gold transition-colors"
@@ -102,16 +93,10 @@ export function Navigation({ onRegisterClick }: NavigationProps) {
             <a
               href="#events"
               onClick={handleLinkClick}
-              className="hover:text-cinema-gold transition-colors"
+              className="hover:text-cinema-gold transition-colors text-cinema-gold font-bold flex items-center gap-1"
             >
-              LINE-UP
-            </a>
-            <a
-              href="#cast"
-              onClick={handleLinkClick}
-              className="hover:text-cinema-gold transition-colors"
-            >
-              THE CAST
+              <span className="w-1.5 h-1.5 bg-cinema-red" />
+              <span>LINE-UP</span>
             </a>
             <a
               href="#schedule"
@@ -198,13 +183,6 @@ export function Navigation({ onRegisterClick }: NavigationProps) {
               THE FILM
             </a>
             <a
-              href="#worlds"
-              onClick={handleLinkClick}
-              className="p-2 border border-cinema-gold text-cinema-gold font-bold block"
-            >
-              THE 7 WORLDS
-            </a>
-            <a
               href="#posters"
               onClick={handleLinkClick}
               className="p-2 border border-cinema-border hover:border-cinema-gold block"
@@ -214,16 +192,9 @@ export function Navigation({ onRegisterClick }: NavigationProps) {
             <a
               href="#events"
               onClick={handleLinkClick}
-              className="p-2 border border-cinema-border hover:border-cinema-gold block"
+              className="p-2 border border-cinema-gold text-cinema-gold font-bold block"
             >
               LINE-UP
-            </a>
-            <a
-              href="#cast"
-              onClick={handleLinkClick}
-              className="p-2 border border-cinema-border hover:border-cinema-gold block"
-            >
-              THE CAST
             </a>
             <a
               href="#schedule"

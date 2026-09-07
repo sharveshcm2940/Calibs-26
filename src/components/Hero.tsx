@@ -144,7 +144,7 @@ export function Hero({ onRegisterClick, onExploreClick }: HeroProps) {
 
         {/* Natural College Tanglish Narrative Dispatch */}
         <p className="font-editorial text-base sm:text-2xl text-cinema-paper/90 max-w-3xl mt-6 italic leading-relaxed">
-          &ldquo;College life-la first scene romba important da. Seven cinematic worlds colliding across the historic SVCE campus. Full volume, zero backdown. Vaanga, kalakkalaam!&rdquo;
+          &ldquo;College life-la first scene romba important da. 32 cultural events lighting up the historic SVCE campus. Full volume, zero backdown. Vaanga, kalakkalaam!&rdquo;
         </p>
 
         {/* CTA Actions Bar with Tanglish Microcopy */}
@@ -164,9 +164,9 @@ export function Hero({ onRegisterClick, onExploreClick }: HeroProps) {
             onClick={handleExplore}
             className="px-8 py-4 bg-cinema-paper hover:bg-[#E2D2B0] text-cinema-black font-poster text-2xl tracking-widest uppercase border-2 border-cinema-black shadow-hard flex items-center gap-2 transition-colors"
           >
-            <span>EXPLORE 7 WORLDS</span>
+            <span>EXPLORE EVENTS</span>
             <span className="hidden sm:inline text-xs font-mono text-cinema-red tracking-widest ml-1">
-              [ PAAKALAAMA? ]
+              [ LINE-UP ]
             </span>
             <ArrowDown className="w-5 h-5 text-cinema-red" />
           </button>

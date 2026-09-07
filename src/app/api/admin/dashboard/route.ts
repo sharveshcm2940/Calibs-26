@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getAdminSession } from "@/lib/auth";
+import { FALLBACK_EVENTS } from "@/lib/fallbackEvents";
 
 export const dynamic = "force-dynamic";
 
@@ -117,75 +118,39 @@ export async function GET() {
   } catch (error: any) {
     console.error("GET /api/admin/dashboard error:", error);
 
-    // Graceful fallback for local development preview
+    // Graceful fallback when database is offline
     if (
       error.name === "PrismaClientInitializationError" ||
       error.message?.includes("Can't reach database server")
     ) {
+      const eventSummaries = FALLBACK_EVENTS.map((ev) => ({
+        id: ev.id,
+        name: ev.name,
+        category: ev.category,
+        venue: ev.venue,
+        capacity: ev.capacity,
+        registered: 0,
+        remaining: ev.capacity,
+        status: "OPEN",
+        fillRate: 0,
+        registrationOpen: ev.registrationOpen,
+      }));
+      const totalCapacity = FALLBACK_EVENTS.reduce((sum, e) => sum + e.capacity, 0);
+
       return NextResponse.json({
         metrics: {
-          totalRegistrations: 154,
-          registrationsToday: 42,
-          totalEvents: 10,
-          openEvents: 6,
-          almostFullEvents: 2,
-          housefullEvents: 1,
-          totalCapacity: 284,
-          overallPercentage: 54,
-          totalRateLimitBlocks: 3,
+          totalRegistrations: 0,
+          registrationsToday: 0,
+          totalEvents: FALLBACK_EVENTS.length,
+          openEvents: FALLBACK_EVENTS.length,
+          almostFullEvents: 0,
+          housefullEvents: 0,
+          totalCapacity,
+          overallPercentage: 0,
+          totalRateLimitBlocks: 0,
         },
-        events: [
-          {
-            id: "mass-dance",
-            name: "Adavadi Steps: Mass Dance",
-            category: "Dance",
-            venue: "Open Air Theatre (OAT)",
-            capacity: 35,
-            registered: 32,
-            remaining: 3,
-            status: "ALMOST_FULL",
-            fillRate: 91,
-            registrationOpen: true,
-          },
-          {
-            id: "fashion-walk",
-            name: "Ramp Raja & Rani: Fashion Walk",
-            category: "Fashion",
-            venue: "Main Auditorium",
-            capacity: 25,
-            registered: 25,
-            remaining: 0,
-            status: "HOUSEFULL",
-            fillRate: 100,
-            registrationOpen: true,
-          },
-          {
-            id: "battle-of-bands",
-            name: "Isai Sangamam: Battle of Bands",
-            category: "Music",
-            venue: "OAT Live Stage",
-            capacity: 12,
-            registered: 8,
-            remaining: 4,
-            status: "LIMITED",
-            fillRate: 67,
-            registrationOpen: true,
-          },
-        ],
-        recentRegistrations: [
-          {
-            id: "reg-1",
-            registrationNumber: "CAL-26-8K29L4",
-            name: "Siva Karthik",
-            email: "siva@ceg.edu",
-            phone: "9840112233",
-            department: "ECE",
-            year: "1st Year",
-            eventName: "Adavadi Steps: Mass Dance",
-            eventCategory: "Dance",
-            createdAt: new Date().toISOString(),
-          },
-        ],
+        events: eventSummaries,
+        recentRegistrations: [],
       });
     }
 

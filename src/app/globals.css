@@ -139,69 +139,7 @@
   border-left: 2px solid #30251D;
 }
 
-/* 7 Kollywood Worlds Atmospheric Styles */
 
-/* 1. Kaithi Sodium Night Road */
-.kaithi-road {
-  background-color: #0B0A08;
-  background-image: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 48px,
-    #E67E22 48px,
-    #E67E22 52px
-  );
-  background-size: 100px 4px;
-  background-position: bottom;
-  background-repeat: repeat-x;
-}
-
-.sodium-haze {
-  background: radial-gradient(circle at 50% 20%, rgba(230, 126, 34, 0.18) 0%, transparent 70%);
-}
-
-/* 2. Leo Cold Fog Texture */
-.leo-mist {
-  background: radial-gradient(circle at 70% 30%, rgba(197, 209, 217, 0.12) 0%, transparent 60%),
-              radial-gradient(circle at 20% 80%, rgba(167, 25, 32, 0.15) 0%, transparent 65%);
-}
-
-/* 3. Rolex Gold Luxury Sheen */
-.rolex-smoke {
-  background: radial-gradient(ellipse at center, rgba(196, 154, 72, 0.16) 0%, transparent 70%);
-}
-
-/* 4. Karuppu Earthy Raw Grain */
-.karuppu-earth {
-  background-color: #0D0C0A;
-  background-image: radial-gradient(#3D2E24 1px, transparent 1px);
-  background-size: 12px 12px;
-}
-
-/* 5. Meesaya Murukku Cassette Wheel */
-@keyframes spinSlow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-.cassette-spin {
-  animation: spinSlow 8s linear infinite;
-}
-
-/* 6. VIP Engineering Grid */
-.vip-grid {
-  background-color: #EDE2CC;
-  background-image: 
-    linear-gradient(to right, rgba(13, 11, 9, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(13, 11, 9, 0.08) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-/* 7. Mankatha Heist Noir Geometry */
-.mankatha-noir {
-  background-color: #0B0B0C;
-  background-image: radial-gradient(rgba(196, 154, 72, 0.12) 1px, transparent 1px);
-  background-size: 16px 16px;
-}
 
 /* Hide scrollbars */
 .no-scrollbar::-webkit-scrollbar {

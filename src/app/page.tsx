@@ -5,16 +5,13 @@ import { CinemaIntro } from "@/components/CinemaIntro";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { AboutSection } from "@/components/AboutSection";
-import { DialogueBox } from "@/components/DialogueBox";
 import { PosterWall, type EventData } from "@/components/PosterWall";
 import { EventCatalogue } from "@/components/EventCatalogue";
-import { CharacterSection } from "@/components/CharacterSection";
 import { ScheduleTimeline } from "@/components/ScheduleTimeline";
 import { GalleryReel } from "@/components/GalleryReel";
 import { SponsorCredits } from "@/components/SponsorCredits";
 import { EndCredits } from "@/components/EndCredits";
 import { RegistrationModal } from "@/components/RegistrationModal";
-import { SevenWorldsShowcase } from "@/components/worlds/SevenWorldsShowcase";
 import { FilmGrainOverlay } from "@/components/FilmGrainOverlay";
 import { CinemaCursor } from "@/components/CinemaCursor";
 import { FilmReelScroll } from "@/components/FilmReelScroll";
@@ -68,15 +65,6 @@ export default function HomePage() {
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleSelectWorldEvent = (eventId: string) => {
-    const found = events.find((e) => e.id === eventId || e.slug === eventId);
-    if (found) {
-      handleOpenRegister(found);
-    } else {
-      handleScrollToEvents();
-    }
-  };
-
   return (
     <main className="min-h-screen bg-print-black text-print-paper relative overflow-x-hidden selection:bg-print-red selection:text-print-paper">
       {/* 35mm Physical Film Grain & Cinema Contextual Cursor */}
@@ -98,15 +86,6 @@ export default function HomePage() {
 
       {/* 35mm GSAP Film Reel Continuous Strip */}
       <FilmReelScroll />
-
-      <SevenWorldsShowcase
-        onSelectEvent={handleSelectWorldEvent}
-        onRegisterClick={() => handleOpenRegister()}
-      />
-
-      <CharacterSection />
-
-      <DialogueBox />
 
       <PosterWall
         events={events}

@@ -32,7 +32,6 @@ export interface EventData {
   pocDept?: string;
   pocContact?: string;
   requirements?: string;
-  worldTheme?: string;
   showType?: "FDFS" | "SDFS";
   showLabel?: string;
   tamilTitle?: string;
@@ -43,18 +42,18 @@ interface PosterWallProps {
   onSelectEvent: (event: EventData) => void;
 }
 
-// Map events to their distinct Kollywood Cinematic Worlds
-const EVENT_WORLDS: Record<string, { world: string; tag: string; border: string; badge: string }> = {
-  "mass-dance": { world: "MEESAYA MURUKKU WORLD", tag: "MM / DANCE CUT", border: "border-world-mm-yellow", badge: "bg-world-mm-yellow text-cinema-black" },
-  "fashion-walk": { world: "MANKATHA WORLD", tag: "MANKATHA / THE GAME", border: "border-world-mankatha-gold", badge: "bg-world-mankatha-gold text-cinema-black" },
-  "battle-of-bands": { world: "MEESAYA MURUKKU WORLD", tag: "MM / MUSIC CUT", border: "border-world-mm-yellow", badge: "bg-world-mm-yellow text-cinema-black" },
-  "short-film": { world: "LEO WORLD", tag: "LEO / SCENE 02", border: "border-cinema-red", badge: "bg-cinema-red text-cinema-paper" },
-  "photography": { world: "VIP WORLD", tag: "VIP / CAMPUS CUT", border: "border-cinema-paper", badge: "bg-cinema-paper text-cinema-black" },
-  "treasure-hunt": { world: "KAITHI WORLD", tag: "KAITHI / NIGHT MODE", border: "border-world-kaithi-sodium", badge: "bg-world-kaithi-sodium text-cinema-black" },
-  "quiz": { world: "MANKATHA WORLD", tag: "MANKATHA / THE GAME", border: "border-world-mankatha-gold", badge: "bg-world-mankatha-gold text-cinema-black" },
-  "drama": { world: "KARUPPU WORLD", tag: "KARUPPU / RAW MASS", border: "border-world-karuppu-vermilion", badge: "bg-world-karuppu-vermilion text-cinema-paper" },
-  "singing": { world: "MEESAYA MURUKKU WORLD", tag: "MM / MUSIC CUT", border: "border-world-mm-yellow", badge: "bg-world-mm-yellow text-cinema-black" },
-  "gaming": { world: "ROLEX WORLD", tag: "ROLEX / BOSS ENTRY", border: "border-world-rolex-gold", badge: "bg-world-rolex-gold text-cinema-black" },
+// Map events to their category presentation styles
+const CATEGORY_STYLES: Record<string, { border: string; badge: string }> = {
+  Dance: { border: "border-cinema-gold", badge: "bg-cinema-gold text-cinema-black" },
+  Music: { border: "border-cinema-gold", badge: "bg-cinema-gold text-cinema-black" },
+  Fashion: { border: "border-cinema-red", badge: "bg-cinema-red text-cinema-paper" },
+  Drama: { border: "border-cinema-red", badge: "bg-cinema-red text-cinema-paper" },
+  Photography: { border: "border-cinema-paper", badge: "bg-cinema-paper text-cinema-black" },
+  Film: { border: "border-cinema-red", badge: "bg-cinema-red text-cinema-paper" },
+  Gaming: { border: "border-cinema-gold", badge: "bg-cinema-gold text-cinema-black" },
+  Quiz: { border: "border-cinema-gold", badge: "bg-cinema-gold text-cinema-black" },
+  Literary: { border: "border-cinema-paper", badge: "bg-cinema-paper text-cinema-black" },
+  Arts: { border: "border-cinema-gold", badge: "bg-cinema-gold text-cinema-black" },
 };
 
 // Physical street wall layout with rotations, spans, and tape tilts
@@ -114,7 +113,7 @@ export function PosterWall({ events, onSelectEvent }: PosterWallProps) {
           {events.map((event, idx) => {
             const conf = WALL_LAYOUT[idx % WALL_LAYOUT.length];
             const isHousefull = event.status === "HOUSEFULL";
-            const worldInfo = EVENT_WORLDS[event.slug] || EVENT_WORLDS["mass-dance"];
+            const catStyle = CATEGORY_STYLES[event.category] || { border: "border-cinema-gold", badge: "bg-cinema-gold text-cinema-black" };
             const isPeeling = peelingId === event.id;
 
             return (
@@ -139,7 +138,7 @@ export function PosterWall({ events, onSelectEvent }: PosterWallProps) {
                 </div>
 
                 {/* Poster Frame */}
-                <div className={`bg-cinema-black border-4 border-cinema-black shadow-hard-lg group-hover:shadow-hard-xl overflow-hidden relative transition-all duration-200 ${worldInfo.border}`}>
+                <div className={`bg-cinema-black border-4 border-cinema-black shadow-hard-lg group-hover:shadow-hard-xl overflow-hidden relative transition-all duration-200 ${catStyle.border}`}>
                   {/* Poster Image Artwork */}
                   <div className="aspect-[2/3] w-full bg-cinema-charcoal relative overflow-hidden">
                     {event.posterImage ? (
@@ -157,10 +156,10 @@ export function PosterWall({ events, onSelectEvent }: PosterWallProps) {
                       </div>
                     )}
 
-                    {/* World Reference Top Ribbon & FDFS/SDFS Indicator */}
+                    {/* Category Ribbon & FDFS/SDFS Indicator */}
                     <div className="absolute top-2 left-2 z-20 flex flex-wrap items-center gap-1">
-                      <span className={`px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-wider border border-cinema-black shadow-hard ${worldInfo.badge}`}>
-                        {worldInfo.tag}
+                      <span className={`px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-wider border border-cinema-black shadow-hard ${catStyle.badge}`}>
+                        {event.category}
                       </span>
                       <span className={`px-2 py-0.5 text-[9px] font-mono font-black uppercase tracking-wider border border-cinema-black shadow-hard ${
                         (event.showType || (event.startTime.includes("2026-09-18") ? "FDFS" : "SDFS")) === "FDFS"

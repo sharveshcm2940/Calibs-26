@@ -31,8 +31,8 @@ const POSTER_METADATA: Record<
     musicCredit: "ANIRUDH × THAMAN KUTHU SCORE",
     cinematography: "35MM KODAK VISION3 500T",
     censorRating: "MASS U/A",
-    accentColor: "text-world-mm-yellow",
-    accentBorder: "border-world-mm-yellow",
+    accentColor: "text-cinema-gold",
+    accentBorder: "border-cinema-gold",
   },
   "fashion-walk": {
     tamilTitle: "ராம்ப் ராஜா & ராணி",
@@ -40,8 +40,8 @@ const POSTER_METADATA: Record<
     musicCredit: "RETRO HARRIS JAYARAJ SCORE",
     cinematography: "PANAVISION ANAMORPHIC 2.39:1",
     censorRating: "GLAMOUR U",
-    accentColor: "text-world-mankatha-gold",
-    accentBorder: "border-world-mankatha-gold",
+    accentColor: "text-cinema-gold",
+    accentBorder: "border-cinema-gold",
   },
   "battle-of-bands": {
     tamilTitle: "இசை சங்கமம்",
@@ -49,8 +49,8 @@ const POSTER_METADATA: Record<
     musicCredit: "ILAIYARAAJA × ROCK SYMPHONY",
     cinematography: "ARRI ALEXA LF HIGH-SPEED",
     censorRating: "DECIBEL U/A",
-    accentColor: "text-world-mm-yellow",
-    accentBorder: "border-world-mm-yellow",
+    accentColor: "text-cinema-red",
+    accentBorder: "border-cinema-red",
   },
   "singing": {
     tamilTitle: "குரல் ஓவியம்",
@@ -67,8 +67,8 @@ const POSTER_METADATA: Record<
     musicCredit: "ELECTRONIC SYNTH BASS HIT",
     cinematography: "DIGITAL 240FPS ULTRA SHUTTER",
     censorRating: "TACTICAL U/A",
-    accentColor: "text-world-kaithi-sodium",
-    accentBorder: "border-world-kaithi-sodium",
+    accentColor: "text-cinema-gold",
+    accentBorder: "border-cinema-gold",
   },
   "short-film": {
     tamilTitle: "70எம்எம் டிரீமர்ஸ்",
@@ -94,8 +94,8 @@ const POSTER_METADATA: Record<
     musicCredit: "SUSPENSEFUL CHASE MOTIFS",
     cinematography: "STEADICAM RUN 35MM",
     censorRating: "MYSTERY U",
-    accentColor: "text-world-kaithi-sodium",
-    accentBorder: "border-world-kaithi-sodium",
+    accentColor: "text-cinema-gold",
+    accentBorder: "border-cinema-gold",
   },
   "quiz": {
     tamilTitle: "சினிமா வெறியன்",
@@ -103,8 +103,8 @@ const POSTER_METADATA: Record<
     musicCredit: "RAPID FIRE RETRO SOUNDTRACK",
     cinematography: "MULTI-CAMERA AUDITORIUM SETUP",
     censorRating: "TRIVIA U",
-    accentColor: "text-world-mankatha-gold",
-    accentBorder: "border-world-mankatha-gold",
+    accentColor: "text-cinema-gold",
+    accentBorder: "border-cinema-gold",
   },
   "cinema-quiz": {
     tamilTitle: "சினிமா வெறியன்",
@@ -112,8 +112,8 @@ const POSTER_METADATA: Record<
     musicCredit: "RAPID FIRE RETRO SOUNDTRACK",
     cinematography: "MULTI-CAMERA AUDITORIUM SETUP",
     censorRating: "TRIVIA U",
-    accentColor: "text-world-mankatha-gold",
-    accentBorder: "border-world-mankatha-gold",
+    accentColor: "text-cinema-gold",
+    accentBorder: "border-cinema-gold",
   },
   "drama": {
     tamilTitle: "கூத்துப்பட்டறை",
@@ -121,8 +121,8 @@ const POSTER_METADATA: Record<
     musicCredit: "LIVE DHOLAK & THAPPU BEATS",
     cinematography: "SPOTLIGHT THEATRE FOLEY",
     censorRating: "INTENSE U/A",
-    accentColor: "text-world-karuppu-vermilion",
-    accentBorder: "border-world-karuppu-vermilion",
+    accentColor: "text-cinema-red",
+    accentBorder: "border-cinema-red",
   },
 };
 

@@ -61,27 +61,10 @@ export async function GET(request: NextRequest) {
       })),
     });
   } catch (error: any) {
-    console.warn("GET /api/admin/registrations DB offline; returning demo list:", error?.message);
+    console.warn("GET /api/admin/registrations DB offline; returning empty list:", error?.message);
     return NextResponse.json({
-      total: 1,
-      registrations: [
-        {
-          id: "reg-1",
-          registrationNumber: "CAL-26-8K29L4",
-          eventId: "mass-dance",
-          eventName: "Adavadi Steps: Mass Dance",
-          eventCategory: "Dance",
-          name: "Siva Karthik",
-          email: "siva@svce.ac.in",
-          phone: "9840112233",
-          department: "ECE",
-          year: "1st Year",
-          college: "Sri Venkateswara College of Engineering (SVCE)",
-          membersCount: 0,
-          members: [],
-          createdAt: new Date().toISOString(),
-        },
-      ],
+      total: 0,
+      registrations: [],
     });
   }
 }

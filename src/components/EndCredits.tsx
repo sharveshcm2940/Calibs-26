@@ -88,7 +88,7 @@ const THEATRICAL_SLIDES: TheatricalSlide[] = [
     mainText: "ANIRUDH & DEVA VIBES ORCHESTRA",
     subText: "LIVE KUTHU BEATS, OVERDRIVE GUITARS & THIRUVIZHA FLUTES",
     isGrandTitle: true,
-    accentColor: "text-world-mm-yellow",
+    accentColor: "text-cinema-gold",
   },
   {
     id: 7,
@@ -115,7 +115,7 @@ const THEATRICAL_SLIDES: TheatricalSlide[] = [
     roleEnglish: "CHOREOGRAPHY",
     mainText: "ADAVADI STREET KUTHU SYNDICATE",
     subText: "CHENNAI THIRUVIZHA SYNCHRONIZED ENERGY",
-    accentColor: "text-world-mm-yellow",
+    accentColor: "text-cinema-gold",
   },
   {
     id: 10,

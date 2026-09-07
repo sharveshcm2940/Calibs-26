@@ -29,38 +29,38 @@ interface FilmScene {
   tagline: string;
   tanglish: string;
   directorNote: string;
-  worldName: string;
+  sceneName: string;
   colorClass: string;
   bgGradient: string;
   icon: React.ReactNode;
 }
 
-// Complete 7 Kollywood Worlds in the 35mm Master Reel
+// 35mm Master Reel of Cultural Highlights
 const FILM_SCENES: FilmScene[] = [
   {
     id: "scene-01",
     frameNo: "FRAME 01",
     scene: "SCENE 01",
-    title: "THE NIGHT",
-    tamilTitle: "கைதி உலகம்",
-    tagline: "Citadel under siege. Zero backup, raw adrenaline.",
-    tanglish: "Night full-ah scene namma dhaan. Flashlight on pannitu field-ku vaanga.",
-    directorNote: "Eastman 500T • Sodium vapor grading • Zero retakes",
-    worldName: "KAITHI WORLD",
-    colorClass: "text-world-kaithi-sodium border-world-kaithi-sodium",
+    title: "THE DANCE ARENA",
+    tamilTitle: "ஆடல் அரங்கம்",
+    tagline: "Synchronized kuthu, mass western, and classical expressions.",
+    tanglish: "Beat start aana udane stage shake aaganum. Pure choreography adrenaline.",
+    directorNote: "Eastman 500T • Stage spotlight grading • Zero retakes",
+    sceneName: "DANCE ARENA",
+    colorClass: "text-cinema-gold border-cinema-gold",
     bgGradient: "from-[#0B0A08] via-[#1A130D] to-[#0B0A08]",
-    icon: <Flame className="w-6 h-6 sm:w-8 sm:h-8 text-world-kaithi-sodium" />,
+    icon: <Flame className="w-6 h-6 sm:w-8 sm:h-8 text-cinema-gold" />,
   },
   {
     id: "scene-02",
     frameNo: "FRAME 02",
     scene: "SCENE 02",
-    title: "THE BEAST",
-    tamilTitle: "லியோ உலகம்",
-    tagline: "Cold mountains, lethal calm, unleashing raw instinct.",
-    tanglish: "Calm-ah irukku... aana scene vera level. Beast mode on.",
-    directorNote: "Sub-zero ice bloom • Monochromatic red shockwave burst",
-    worldName: "LEO WORLD",
+    title: "THE SOUNDSTAGE",
+    tamilTitle: "இசை சங்கமம்",
+    tagline: "Live band overdrive, acoustic harmonies, and vocal battles.",
+    tanglish: "Amp gain up, mic checked. Kollywood melodies and rock anthems.",
+    directorNote: "Analog tube warmth • Front-row monitor mix",
+    sceneName: "MUSIC STAGE",
     colorClass: "text-cinema-red border-cinema-red",
     bgGradient: "from-[#08090C] via-[#1A0A0C] to-[#08090C]",
     icon: <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-cinema-red" />,
@@ -69,71 +69,71 @@ const FILM_SCENES: FilmScene[] = [
     id: "scene-03",
     frameNo: "FRAME 03",
     scene: "SCENE 03",
-    title: "THE BOSS",
-    tamilTitle: "ரோலக்ஸ் உலகம்",
-    tagline: "The darkness parts for the ultimate orchestrator.",
-    tanglish: "Entry late aanaalum, impact late aagathu. Stage authority belongs to us.",
-    directorNote: "Low key 24K gold rim highlight • Uncompromising presence",
-    worldName: "ROLEX WORLD",
-    colorClass: "text-world-rolex-gold border-world-rolex-gold",
+    title: "THE PROSCENIUM",
+    tamilTitle: "நாடக மேடை",
+    tagline: "Theatrical mime, dramatic acts, and comedic street plays.",
+    tanglish: "Dialogue delivery, razor-sharp timing. Entire crowd spellbound.",
+    directorNote: "Spotlight rim accent • Proscenium theatrical lighting",
+    sceneName: "DRAMA STAGE",
+    colorClass: "text-cinema-paper border-cinema-paper",
     bgGradient: "from-[#0A0907] via-[#1C170F] to-[#0A0907]",
-    icon: <Crown className="w-6 h-6 sm:w-8 sm:h-8 text-world-rolex-gold" />,
+    icon: <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-cinema-paper" />,
   },
   {
     id: "scene-04",
     frameNo: "FRAME 04",
     scene: "SCENE 04",
-    title: "THE RAW MASS",
-    tamilTitle: "கருப்பு உலகம்",
-    tagline: "Rooted in red soil. Unforgiving fury and indigenous pride.",
-    tanglish: "Mannoda veeram, kuraloda thimiru. Edhuvume easy illa... aana scene namma dhaan.",
-    directorNote: "Earthen terracotta tone • Tribal percussion resonance",
-    worldName: "KARUPPU WORLD",
-    colorClass: "text-world-karuppu-vermilion border-world-karuppu-vermilion",
+    title: "THE VIEWFINDER",
+    tamilTitle: "ஒளிப்பதிவு",
+    tagline: "Street photography scavenger, shutter dares, and candid frames.",
+    tanglish: "Frame compose pannu, shutter speed check. Best shot on campus wins.",
+    directorNote: "35mm prime lens clarity • Grain texture preservation",
+    sceneName: "PHOTO CLUB",
+    colorClass: "text-cinema-gold border-cinema-gold",
     bgGradient: "from-[#0D0C0A] via-[#241710] to-[#0D0C0A]",
-    icon: <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-world-karuppu-vermilion" />,
+    icon: <Film className="w-6 h-6 sm:w-8 sm:h-8 text-cinema-gold" />,
   },
   {
     id: "scene-05",
     frameNo: "FRAME 05",
     scene: "SCENE 05",
-    title: "THE CAMPUS",
-    tamilTitle: "மீசைய முறுக்கு",
-    tagline: "Canteen benches, overdriven guitars, and lifetime friendship.",
-    tanglish: "Class-ku attendance irukku... aana vibe-ku attendance venam. Friends irundha podhum.",
-    directorNote: "Overdrive guitar line-check • SVCE canteen memories",
-    worldName: "MEESAYA MURUKKU",
-    colorClass: "text-world-mm-yellow border-world-mm-yellow",
+    title: "THE 35MM CUT",
+    tamilTitle: "குறும்படம்",
+    tagline: "Original student short films, scripts, and editing showcases.",
+    tanglish: "Script ready, storyboard drawn. First cut on the big projector.",
+    directorNote: "2.39:1 Cinemascope ratio • 24fps cinematic roll",
+    sceneName: "FILM CLUB",
+    colorClass: "text-cinema-red border-cinema-red",
     bgGradient: "from-[#14120E] via-[#241E15] to-[#14120E]",
-    icon: <Radio className="w-6 h-6 sm:w-8 sm:h-8 text-world-mm-yellow" />,
+    icon: <Radio className="w-6 h-6 sm:w-8 sm:h-8 text-cinema-red" />,
   },
   {
     id: "scene-06",
     frameNo: "FRAME 06",
     scene: "SCENE 06",
-    title: "THE REBEL",
-    tamilTitle: "விஐபி உலகம்",
-    tagline: "Engineering spirit, tea stall banter, unstoppable courage.",
-    tanglish: "Dei, nee stage-ku varriya illaya? Attendance pathi apram paathukalaam.",
-    directorNote: "Thermal paper receipt texture • 1st year fresher anthem",
-    worldName: "VIP WORLD",
-    colorClass: "text-cinema-paper border-cinema-paper",
+    title: "THE ARENA",
+    tamilTitle: "மின்னணு களம்",
+    tagline: "High-octane competitive e-sports and collegiate LAN showdowns.",
+    tanglish: "144Hz monitors, zero latency, reflex clashing for the crown.",
+    directorNote: "Neon peripheral glow • Tournament low-latency feed",
+    sceneName: "GAMING ZONE",
+    colorClass: "text-cinema-gold border-cinema-gold",
     bgGradient: "from-[#100E0B] via-[#211B14] to-[#100E0B]",
-    icon: <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-cinema-paper" />,
+    icon: <Crown className="w-6 h-6 sm:w-8 sm:h-8 text-cinema-gold" />,
   },
   {
     id: "scene-07",
     frameNo: "FRAME 07",
     scene: "SCENE 07",
-    title: "THE GAME",
-    tamilTitle: "மங்காத்தா உலகம்",
-    tagline: "High-stakes lineup. One shot at the championship shield.",
-    tanglish: "Game start aagiduchu. Risk edukkama win panna mudiyuma? All in da.",
-    directorNote: "High contrast monochrome noir • 01-05 number shuffle lock",
-    worldName: "MANKATHA WORLD",
+    title: "THE OAT CLIMAX",
+    tamilTitle: "உச்சகட்ட காட்சி",
+    tagline: "Open Air Theatre grand finale, awards ceremony, and trophy roar.",
+    tanglish: "Final whistle, winning squad hoisting the championship shield.",
+    directorNote: "Strobe flares • OAT capacity whistle resonance",
+    sceneName: "OAT FINALE",
     colorClass: "text-white border-white",
     bgGradient: "from-[#0B0B0C] via-[#16171A] to-[#0B0B0C]",
-    icon: <Spade className="w-6 h-6 sm:w-8 sm:h-8 text-world-mankatha-gold" />,
+    icon: <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-white" />,
   },
 ];
 
@@ -322,7 +322,7 @@ export function FilmReelScroll() {
               {/* Top Film Frame Number Stamp */}
               <div className="flex items-center justify-between border-b border-cinema-border/80 sm:border-b-2 pb-2 sm:pb-2.5 mb-3 sm:mb-5 font-mono text-[10px] sm:text-xs">
                 <span className="font-bold text-cinema-gold tracking-wider sm:tracking-widest uppercase truncate max-w-[160px] sm:max-w-none">
-                  {scene.frameNo} • {scene.worldName}
+                  {scene.frameNo} • {scene.sceneName}
                 </span>
                 <span className="px-1.5 py-0.5 sm:px-2 bg-cinema-black border border-cinema-border font-bold text-cinema-paper text-[9px] sm:text-[10px] shrink-0">
                   REEL #0{((idx) % 7) + 1}
@@ -398,7 +398,7 @@ export function FilmReelScroll() {
               <div className="flex items-center gap-2">
                 <Film className="w-4 h-4 text-cinema-gold" />
                 <span className="font-bold text-cinema-gold uppercase tracking-widest text-[11px] sm:text-xs">
-                  {inspectedScene.frameNo} • {inspectedScene.worldName}
+                  {inspectedScene.frameNo} • {inspectedScene.sceneName}
                 </span>
               </div>
               <button
