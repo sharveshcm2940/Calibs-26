@@ -109,6 +109,7 @@ export default function HomePage() {
       {isRegisterModalOpen && selectedEventForModal && (
         <RegistrationModal
           event={selectedEventForModal}
+          allEvents={events}
           onClose={() => setIsRegisterModalOpen(false)}
           onRegistrationSuccess={handleEventRegistrationSuccess}
         />

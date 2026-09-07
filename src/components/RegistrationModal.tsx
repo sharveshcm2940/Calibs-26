@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { X, Plus, Trash2, Clapperboard, CheckCircle2, AlertCircle, ArrowRight } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { X, Plus, Trash2, Clapperboard, CheckCircle2, AlertCircle, ArrowRight, Film, ChevronDown } from "lucide-react";
 import type { EventData } from "./PosterWall";
 import { TicketStub, type TicketDetails } from "./TicketStub";
 import { formatDate, formatTime } from "@/lib/utils";
@@ -10,6 +10,7 @@ import { generateRegistrationNumber } from "@/lib/registrationNumber";
 
 interface RegistrationModalProps {
   event: EventData | null;
+  allEvents?: EventData[];
   isOpen?: boolean;
   onClose: () => void;
   onSuccess?: () => void;
@@ -41,12 +42,14 @@ const CLAPPER_STRIPES = [
 ];
 
 export function RegistrationModal({
-  event,
+  event: initialEvent,
+  allEvents = [],
   isOpen,
   onClose,
   onSuccess,
   onRegistrationSuccess,
 }: RegistrationModalProps) {
+  const [selectedEvent, setSelectedEvent] = useState<EventData | null>(initialEvent);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -62,7 +65,29 @@ export function RegistrationModal({
   const [isHousefullError, setIsHousefullError] = useState(false);
   const [confirmedTicket, setConfirmedTicket] = useState<TicketDetails | null>(null);
 
+  useEffect(() => {
+    setSelectedEvent(initialEvent);
+    if (initialEvent) {
+      setIsHousefullError(initialEvent.status === "HOUSEFULL" || initialEvent.registeredCount >= initialEvent.capacity);
+    }
+  }, [initialEvent]);
+
+  const event = selectedEvent || initialEvent;
+
   if (!event || (isOpen !== undefined && !isOpen)) return null;
+
+  const handleEventChange = (eventId: string) => {
+    const found = allEvents.find((e) => e.id === eventId || e.slug === eventId);
+    if (found) {
+      soundEngine.playProjectorClick();
+      setSelectedEvent(found);
+      setErrorMsg(null);
+      setIsHousefullError(found.status === "HOUSEFULL" || found.registeredCount >= found.capacity);
+      if (members.length > found.maxTeamSize - 1) {
+        setMembers(members.slice(0, Math.max(0, found.maxTeamSize - 1)));
+      }
+    }
+  };
 
   const handleAddMember = () => {
     soundEngine.playProjectorClick();
@@ -300,19 +325,58 @@ export function RegistrationModal({
             )}
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Row 1: PRODUCTION */}
-              <div className="border-b-2 border-zinc-900 pb-2">
-                <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
-                  <span className="text-xs font-black uppercase tracking-widest text-zinc-900 block">
-                    PRODUCTION • SRI VENKATESWARA COLLEGE OF ENGINEERING
-                  </span>
+              {/* Row 1: PRODUCTION & EVENT SELECTOR */}
+              <div className="border-b-2 border-zinc-900 pb-3">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                  <label htmlFor="modal-event-select" className="text-xs font-black uppercase tracking-widest text-zinc-900 flex items-center gap-1.5">
+                    <Film className="w-3.5 h-3.5 text-red-600" />
+                    <span>PRODUCTION • SELECT SHOW / EVENT</span>
+                  </label>
                   <span className="text-[11px] font-mono text-red-600 font-bold uppercase">
-                    Ticket edukka ready-ah? Register pannitu scene-ku vaanga.
+                    {event.remainingSpots > 0 ? `${event.remainingSpots} SPOTS LEFT` : "HOUSEFULL"}
                   </span>
                 </div>
-                <div className="font-poster text-2xl sm:text-3xl font-black uppercase tracking-wide text-zinc-900 leading-none">
-                  CALIBRATIONS 2026–2027: {event.name}
-                </div>
+
+                {allEvents && allEvents.length > 0 ? (
+                  <div className="space-y-1.5">
+                    <div className="relative">
+                      <select
+                        id="modal-event-select"
+                        value={event.id}
+                        onChange={(e) => handleEventChange(e.target.value)}
+                        className="w-full px-3 py-2.5 pr-8 bg-amber-50 hover:bg-yellow-100 focus:bg-yellow-100 border-2 border-zinc-900 font-poster text-xl sm:text-2xl font-black uppercase text-zinc-900 outline-none cursor-pointer transition-colors appearance-none shadow-sm"
+                      >
+                        {allEvents.map((ev) => (
+                          <option
+                            key={ev.id}
+                            value={ev.id}
+                            className="text-sm font-sans font-bold"
+                          >
+                            {ev.name} • {ev.category} [{ev.showType || "FDFS"}] {ev.status === "HOUSEFULL" ? "(SOLD OUT)" : `(${ev.remainingSpots} spots left)`}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown className="w-5 h-5 text-zinc-900 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2 text-[10px] font-mono text-zinc-600">
+                      <span>VENUE: <strong className="text-zinc-900">{event.venue}</strong></span>
+                      <span>•</span>
+                      <span>TIME: <strong className="text-zinc-900">{formatTime(event.startTime)}</strong></span>
+                      <span>•</span>
+                      <span>FORMAT: <strong className="text-zinc-900">{event.isTeamEvent ? `Team (up to ${event.maxTeamSize})` : "Solo"}</strong></span>
+                      {event.club && (
+                        <>
+                          <span>•</span>
+                          <span>CLUB: <strong className="text-zinc-900">{event.club}</strong></span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="font-poster text-2xl sm:text-3xl font-black uppercase tracking-wide text-zinc-900 leading-none">
+                    CALIBRATIONS 2026–2027: {event.name}
+                  </div>
+                )}
               </div>
 
               {/* Row 2: 4 Grid Boxes (ROLL, SCENE, SHOT, TAKE) */}
